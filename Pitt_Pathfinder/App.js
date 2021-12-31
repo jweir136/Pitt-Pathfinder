@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import realm from './Database';
 import type {Node} from 'react';
 import {
   SafeAreaView,
