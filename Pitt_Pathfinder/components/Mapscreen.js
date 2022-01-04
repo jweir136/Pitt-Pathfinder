@@ -19,8 +19,8 @@ export default class Mapscreen extends Component {
                 let currentRegion = {
                     latitude: parseFloat(position.coords.latitude),
                     longitude: parseFloat(position.coords.longitude),
-                    latitudeDelta: 0.0522,
-                    longitudeDelta: 0.0221
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005
                 };
                 this.setState({
                     region: currentRegion
