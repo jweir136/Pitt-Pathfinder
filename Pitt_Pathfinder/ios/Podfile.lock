@@ -381,6 +381,8 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNReverseGeocode (0.0.7):
+    - React
   - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
@@ -448,6 +450,7 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - "RNReverseGeocode (from `../node_modules/@kiwicom/react-native-reverse-geocode`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -542,6 +545,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNReverseGeocode:
+    :path: "../node_modules/@kiwicom/react-native-reverse-geocode"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   Yoga:
@@ -598,6 +603,7 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNGestureHandler: e5c7cab5f214503dcefd6b2b0cefb050e1f51c4a
   RNReanimated: da3860204e5660c0dd66739936732197d359d753
+  RNReverseGeocode: c2c1d1593e4e09804fbb2643a2ea80fa031a9543
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

@@ -3,6 +3,7 @@ import { View, Text, Platform, StyleSheet } from 'react-native';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
 import MapView from 'react-native-maps';
+import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
 
 export default class Mapscreen extends Component {
     constructor(props) {

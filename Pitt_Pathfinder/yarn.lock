@@ -1008,6 +1008,11 @@
     "@types/yargs" "^16.0.0"
     "chalk" "^4.0.0"
 
+"@kiwicom/react-native-reverse-geocode@^0.0.7":
+  "integrity" "sha512-XtmbHM8bDZkHzwD43fPy3L4eq2UvBb2gBMsl/e0eC+rMMV1RSSz1V+Z5hKyxAcvF73znm26kHhlsEcGmiK7rwQ=="
+  "resolved" "https://registry.npmjs.org/@kiwicom/react-native-reverse-geocode/-/react-native-reverse-geocode-0.0.7.tgz"
+  "version" "0.0.7"
+
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
