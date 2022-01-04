@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import Geolocation from 'react-native-geolocation-service';
 import type {Node} from 'react';
 import {
   SafeAreaView,
