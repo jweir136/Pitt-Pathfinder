@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, Platform } from 'react-native';
+import { View, Text, Platform, StyleSheet } from 'react-native';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
+import MapView from 'react-native-maps';
 
 export default class Mapscreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'lat':null,
-            'lon':null
+            'region':null
         };
     }
 
@@ -16,14 +16,18 @@ export default class Mapscreen extends Component {
         Geolocation.requestAuthorization('whenInUse');
         let _watchId = Geolocation.watchPosition(
             (position) => {
+                let currentRegion = {
+                    latitude: parseFloat(position.coords.latitude),
+                    longitude: parseFloat(position.coords.longitude),
+                    latitudeDelta: 0.0522,
+                    longitudeDelta: 0.0221
+                };
                 this.setState({
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude
+                    region: currentRegion
                 });
-                console.log(this.state);
             },
             (error) => {
-                console.log(error.code, error.message);
+                console.log(error.code, error.message); // TODO : navigate to error screen
             },
             {
                 enabledHighAccuracy: true,
@@ -34,6 +38,25 @@ export default class Mapscreen extends Component {
     }
 
     render() {
-        return <Text>Coordinates: {this.state.lat},{this.state.lon}</Text>
+        return (
+            <View style={ styles.container }>
+                <MapView
+                    style={ styles.map }
+                    initialRegion={ this.state.region }
+                    followUserLocation={true}
+                    showsUserLocation={true}
+                    region={this.state.region}
+                />
+            </View>
+        );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    map: {
+        flex: 1
+    },
+});
