@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, StyleSheet } from 'react-native';
+import { View, Text, Platform, StyleSheet, Dimensions, KeyboardAvoidingView, TextInput } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
 import MapView from 'react-native-maps';
@@ -9,7 +10,8 @@ export default class Mapscreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'region':null
+            'region':null,
+            'lookupRegion':null
         };
     }
 
@@ -23,9 +25,18 @@ export default class Mapscreen extends Component {
                     latitudeDelta: 0.005,
                     longitudeDelta: 0.005
                 };
+                let currentLookupRegion = {
+                    latitude: parseFloat(position.coords.latitude),
+                    longitude: parseFloat(position.coords.longitude),
+                    latitudeDelta: 0.2,
+                    longitudeDelta: 0.2
+                };
                 this.setState({
-                    region: currentRegion
+                    region: currentRegion,
+                    lookupRegion: currentLookupRegion
                 });
+
+                console.log(this.state.lookupRegion);
             },
             (error) => {
                 console.log(error.code, error.message); // TODO : navigate to error screen
@@ -48,6 +59,11 @@ export default class Mapscreen extends Component {
                     showsUserLocation={true}
                     region={this.state.region}
                 />
+                <View style={styles.lower}>
+                    <SearchBar
+                        placeholder="Type Here..."
+                    />
+                </View>
             </View>
         );
     }
@@ -58,6 +74,14 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     map: {
-        flex: 1
+        flex: 1,
+    },
+    lower: {
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: "#FFFFFF",
+            height: Dimensions.get('window').height / 10,
     },
 });

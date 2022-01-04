@@ -134,6 +134,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				10020D0D716716CAE588847C /* Pods */,
+				A827A54017E74F05B702C7F5 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +148,14 @@
 				00E356EE1AD99517003FC87E /* Pitt_PathfinderTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A827A54017E74F05B702C7F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

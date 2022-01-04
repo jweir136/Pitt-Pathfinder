@@ -386,6 +386,8 @@ PODS:
   - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
+  - RNVectorIcons (9.0.0):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -452,6 +454,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - "RNReverseGeocode (from `../node_modules/@kiwicom/react-native-reverse-geocode`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -549,6 +552,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@kiwicom/react-native-reverse-geocode"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -605,9 +610,10 @@ SPEC CHECKSUMS:
   RNReanimated: da3860204e5660c0dd66739936732197d359d753
   RNReverseGeocode: c2c1d1593e4e09804fbb2643a2ea80fa031a9543
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
+  RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: f1129eb27c97db222dab9da4eac1cb31b7ec4162
+PODFILE CHECKSUM: 1fac15b781887669a03e37ed417472660ed6df8f
 
 COCOAPODS: 1.11.2
