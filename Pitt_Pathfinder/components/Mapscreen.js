@@ -7,8 +7,8 @@ export default class Mapscreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'lat':0,
-            'lon':0
+            'lat':null,
+            'lon':null
         };
     }
 
@@ -16,8 +16,10 @@ export default class Mapscreen extends Component {
         Geolocation.requestAuthorization('whenInUse');
         let _watchId = Geolocation.watchPosition(
             (position) => {
-                this.state['lat'] = position.coords.latitude;
-                this.state['lon'] = position.coords.longitude;
+                this.setState({
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                });
                 console.log(this.state);
             },
             (error) => {
@@ -32,6 +34,6 @@ export default class Mapscreen extends Component {
     }
 
     render() {
-        return <Text>Hello, World!</Text>
+        return <Text>Coordinates: {this.state.lat},{this.state.lon}</Text>
     }
 }
