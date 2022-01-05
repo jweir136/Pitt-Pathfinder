@@ -5,6 +5,7 @@ import { SearchBar } from 'react-native-elements';
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
 import MapView from 'react-native-maps';
 import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
+import Openrouteservice from "openrouteservice-js";
 
 export default class Mapscreen extends Component {
     constructor(props) {
@@ -73,10 +74,11 @@ export default class Mapscreen extends Component {
             destination: {
                 'name':itemName,
                 'address': itemAddress,
-                'lat':itemLocation.latitude,
-                'lon':itemLocation.longitude
+                'location':itemLocation
             }
         });
+
+        fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ this.state.destination.location }&destination=${ this.state.destination.location}`)
     }
 
     render() {
