@@ -7,8 +7,6 @@ import MapView, {Geojson, Polyline} from 'react-native-maps';
 import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
 import Openrouteservice from "openrouteservice-js";
 
-import GeojsonRoute from './GeojsonRoute'
-
 export default class Mapscreen extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +17,7 @@ export default class Mapscreen extends Component {
             'input':'',
             'searchResults':null,
             'destination':null,
-            'path':[[]]
+            'path':[]
         };
     }
 
@@ -82,15 +80,18 @@ export default class Mapscreen extends Component {
         });
 
         let orsDirections = new Openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62484574f63f5f6349e1a16bb62b17c559d5"}); 
-        console.log(this.state.region.latitude, itemLocation.latitude);
-        console.log(this.state.region.longitude, itemLocation.longitude);
         orsDirections.calculate({
             coordinates: [[this.state.region.longitude,this.state.region.latitude],[itemLocation.longitude,itemLocation.latitude]],
             profile: "driving-car",
             format: "geojson"
         }).then(json => {
-            this.setState({path: json.features[0].geometry.coordinates});
-            console.log(this.state.path);
+            var data = json.features[0].geometry.coordinates.map(function(item) {
+                return {
+                  longitude: item[0],
+                  latitude: item[1]
+                };
+              });
+            this.setState({path: data});
         }).catch(err => {
             console.log('ERROR: ', err.message);    // TODO : Add valid error handling.
         });
@@ -107,9 +108,9 @@ export default class Mapscreen extends Component {
                     region={this.state.region}
                 >
                     <Polyline
-                        coordinates={[
-                           
-                        ]}
+                        coordinates={
+                            this.state.path
+                        }
                         strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
                         strokeColors={[
                             '#7F0000',
