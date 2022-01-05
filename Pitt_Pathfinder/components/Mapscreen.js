@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, StyleSheet, Dimensions, KeyboardAvoidingView, TextInput } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Dimensions, KeyboardAvoidingView } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
@@ -12,7 +12,9 @@ export default class Mapscreen extends Component {
         this.state = {
             'region':null,
             'lookupRegion':null,
-            'factor': 10
+            'factor': 10,
+            'input':'',
+            'searchResults':null
         };
     }
 
@@ -36,8 +38,6 @@ export default class Mapscreen extends Component {
                     region: currentRegion,
                     lookupRegion: currentLookupRegion
                 });
-
-                console.log(this.state.lookupRegion);
             },
             (error) => {
                 console.log(error.code, error.message); // TODO : navigate to error screen
@@ -52,7 +52,20 @@ export default class Mapscreen extends Component {
 
     toggleLower = () => {
         this.setState({ factor: 2 });
-        console.log("DONE");
+    }
+
+    submitInput = () => {
+        console.log(this.state.region);
+        RNReverseGeocode.searchForLocations(
+            this.state.input,
+            this.state.lookupRegion,
+            (err, res) => {
+                this.setState({
+                    searchResults: res
+                });
+                // TODO : Handle errors
+            }
+        );
     }
 
     render() {
@@ -68,10 +81,17 @@ export default class Mapscreen extends Component {
                 <View style={[styles.lower, { height: Dimensions.get('window').height / this.state.factor } ]}>
                     <SearchBar
                         onFocus={this.toggleLower}
-                        iconStyle={{backgroundColor:'white'}}
-                        inputContainerStyle={{backgroundColor: 'white', borderColor:'#fff'}}
-                        containerStyle={{ backgroundColor: 'white'  }}
+                        iconStyle={{backgroundColor:'#FFFFFF'}}
+                        inputContainerStyle={{backgroundColor: '#FFFFFF', borderColor:'#FFFFFF'}}
+                        containerStyle={{ backgroundColor: '#FFFFFF'  }}
                         style={styles.input}
+                        onChangeText={ (text) => this.setState({ input: text }) }
+                        value={ this.state.input }
+                        onSubmitEditing={ this.submitInput }
+                    />
+                    <FlatList
+                        data={this.state.searchResults}
+                        renderItem={({item}) => <View style={styles.listItem}><Text style={styles.boldItem}>{item.name}</Text><Text style={styles.smallItem}>{item.address}</Text></View>}
                     />
                 </View>
             </KeyboardAvoidingView>
@@ -93,4 +113,15 @@ const styles = StyleSheet.create({
             right: 0,
             backgroundColor: "white",
     },
+    listItem: {
+        backgroundColor: '#FFFFFF',
+        padding: '5%',
+        borderBottomColor: 'black'
+    },
+    boldItem: {
+        fontSize: 18
+    },
+    smallItem: {
+        fontSize: 14
+    }
 });
