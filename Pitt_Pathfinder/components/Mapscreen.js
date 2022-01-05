@@ -11,7 +11,8 @@ export default class Mapscreen extends Component {
         super(props);
         this.state = {
             'region':null,
-            'lookupRegion':null
+            'lookupRegion':null,
+            'factor': 10
         };
     }
 
@@ -49,9 +50,14 @@ export default class Mapscreen extends Component {
         );
     }
 
+    toggleLower = () => {
+        this.setState({ factor: 2 });
+        console.log("DONE");
+    }
+
     render() {
         return (
-            <View style={ styles.container }>
+            <KeyboardAvoidingView style={ styles.container }>
                 <MapView
                     style={ styles.map }
                     initialRegion={ this.state.region }
@@ -59,12 +65,16 @@ export default class Mapscreen extends Component {
                     showsUserLocation={true}
                     region={this.state.region}
                 />
-                <View style={styles.lower}>
+                <View style={[styles.lower, { height: Dimensions.get('window').height / this.state.factor } ]}>
                     <SearchBar
-                        placeholder="Type Here..."
+                        onFocus={this.toggleLower}
+                        iconStyle={{backgroundColor:'white'}}
+                        inputContainerStyle={{backgroundColor: 'white', borderColor:'#fff'}}
+                        containerStyle={{ backgroundColor: 'white'  }}
+                        style={styles.input}
                     />
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
@@ -81,7 +91,6 @@ const styles = StyleSheet.create({
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: "#FFFFFF",
-            height: Dimensions.get('window').height / 10,
+            backgroundColor: "white",
     },
 });
