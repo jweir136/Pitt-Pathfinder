@@ -57,6 +57,11 @@ export default class Mapscreen extends Component {
         this.setState({ factor: 2 });
     }
 
+    toggleLowerDown = () => {
+        if (this.state.factor === 2)
+            this.setState({factor: 10});
+    }
+
     submitInput = () => {
         RNReverseGeocode.searchForLocations(
             this.state.input,
@@ -106,6 +111,7 @@ export default class Mapscreen extends Component {
                     followUserLocation={true}
                     showsUserLocation={true}
                     region={this.state.region}
+                    onPress={this.toggleLowerDown}
                 >
                     <Polyline
                         coordinates={
