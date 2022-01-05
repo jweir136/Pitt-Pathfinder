@@ -3,9 +3,11 @@ import { View, Text, FlatList, StyleSheet, Dimensions, KeyboardAvoidingView, Tou
 import { SearchBar } from 'react-native-elements';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
-import MapView from 'react-native-maps';
+import MapView, {Geojson, Polyline} from 'react-native-maps';
 import RNReverseGeocode from "@kiwicom/react-native-reverse-geocode";
 import Openrouteservice from "openrouteservice-js";
+
+import GeojsonRoute from './GeojsonRoute'
 
 export default class Mapscreen extends Component {
     constructor(props) {
@@ -16,7 +18,8 @@ export default class Mapscreen extends Component {
             'factor': 10,
             'input':'',
             'searchResults':null,
-            'destination':null
+            'destination':null,
+            'path':[[]]
         };
     }
 
@@ -85,9 +88,10 @@ export default class Mapscreen extends Component {
             coordinates: [[this.state.region.longitude,this.state.region.latitude],[itemLocation.longitude,itemLocation.latitude]],
             profile: "driving-car",
             format: "geojson"
-        }).then(function(json) {
-            console.log(JSON.stringify(json));
-        }).catch(function(err) {
+        }).then(json => {
+            this.setState({path: json.features[0].geometry.coordinates});
+            console.log(this.state.path);
+        }).catch(err => {
             console.log('ERROR: ', err.message);    // TODO : Add valid error handling.
         });
     }
@@ -101,7 +105,24 @@ export default class Mapscreen extends Component {
                     followUserLocation={true}
                     showsUserLocation={true}
                     region={this.state.region}
-                />
+                >
+                    <Polyline
+                        coordinates={[
+                           
+                        ]}
+                        strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                        strokeColors={[
+                            '#7F0000',
+                            '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
+                            '#B24112',
+                            '#E5845C',
+                            '#238C23',
+                            '#7F0000'
+                        ]}
+                        strokeWidth={6}>
+
+                        </Polyline>
+                </MapView>
                 <View style={[styles.lower, { height: Dimensions.get('window').height / this.state.factor } ]}>
                     <SearchBar
                         onFocus={this.toggleLower}
