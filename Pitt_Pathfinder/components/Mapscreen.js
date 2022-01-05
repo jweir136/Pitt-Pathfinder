@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet, Dimensions, KeyboardAvoidingView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Dimensions, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 import Geolocation, { requestAuthorization } from 'react-native-geolocation-service';
@@ -14,7 +14,8 @@ export default class Mapscreen extends Component {
             'lookupRegion':null,
             'factor': 10,
             'input':'',
-            'searchResults':null
+            'searchResults':null,
+            'destination':null
         };
     }
 
@@ -55,7 +56,6 @@ export default class Mapscreen extends Component {
     }
 
     submitInput = () => {
-        console.log(this.state.region);
         RNReverseGeocode.searchForLocations(
             this.state.input,
             this.state.lookupRegion,
@@ -66,6 +66,17 @@ export default class Mapscreen extends Component {
                 // TODO : Handle errors
             }
         );
+    }
+
+    setDestination = (itemName, itemAddress, itemLocation) => {
+        this.setState({
+            destination: {
+                'name':itemName,
+                'address': itemAddress,
+                'lat':itemLocation.latitude,
+                'lon':itemLocation.longitude
+            }
+        });
     }
 
     render() {
@@ -91,7 +102,8 @@ export default class Mapscreen extends Component {
                     />
                     <FlatList
                         data={this.state.searchResults}
-                        renderItem={({item}) => <View style={styles.listItem}><Text style={styles.boldItem}>{item.name}</Text><Text style={styles.smallItem}>{item.address}</Text></View>}
+                        // start here!
+                        renderItem={({item}) => <TouchableOpacity onPress={() => this.setDestination(item.name, item.address, item.location)}><View style={styles.listItem}><Text style={styles.boldItem}>{item.name}</Text><Text style={styles.smallItem}>{item.address}</Text></View></TouchableOpacity>}
                     />
                 </View>
             </KeyboardAvoidingView>
