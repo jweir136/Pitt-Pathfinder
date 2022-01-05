@@ -78,7 +78,18 @@ export default class Mapscreen extends Component {
             }
         });
 
-        fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ this.state.destination.location }&destination=${ this.state.destination.location}`)
+        let orsDirections = new Openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62484574f63f5f6349e1a16bb62b17c559d5"}); 
+        console.log(this.state.region.latitude, itemLocation.latitude);
+        console.log(this.state.region.longitude, itemLocation.longitude);
+        orsDirections.calculate({
+            coordinates: [[this.state.region.longitude,this.state.region.latitude],[itemLocation.longitude,itemLocation.latitude]],
+            profile: "driving-car",
+            format: "geojson"
+        }).then(function(json) {
+            console.log(JSON.stringify(json));
+        }).catch(function(err) {
+            console.log('ERROR: ', err.message);    // TODO : Add valid error handling.
+        });
     }
 
     render() {
