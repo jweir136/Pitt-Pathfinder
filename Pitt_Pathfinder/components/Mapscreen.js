@@ -64,8 +64,7 @@ export default class Mapscreen extends Component {
 
     submitInput = () => {
         RNReverseGeocode.searchForLocations(
-            "",
-            //this.state.input,
+            this.state.input,
             this.state.lookupRegion,
             (err, res) => {;
                 this.setState({
