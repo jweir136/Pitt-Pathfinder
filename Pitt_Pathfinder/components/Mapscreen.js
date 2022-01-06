@@ -43,7 +43,7 @@ export default class Mapscreen extends Component {
                 });
             },
             (error) => {
-                console.log(error.code, error.message); // TODO : navigate to error screen
+
             },
             {
                 enabledHighAccuracy: true,
@@ -64,13 +64,13 @@ export default class Mapscreen extends Component {
 
     submitInput = () => {
         RNReverseGeocode.searchForLocations(
-            this.state.input,
+            "",
+            //this.state.input,
             this.state.lookupRegion,
-            (err, res) => {
+            (err, res) => {;
                 this.setState({
                     searchResults: res
                 });
-                // TODO : Handle errors
             }
         );
     }

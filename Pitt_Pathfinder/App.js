@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Mapscreen from './components/Mapscreen';
+import Errorscreen from './components/Errorscreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,11 @@ const App = () => {
           component={Mapscreen}
           options={{ title: 'Map' }}
         />
+      <Stack.Screen
+        name="Error"
+        component={Errorscreen}
+        options={{ title: "Error" }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );
