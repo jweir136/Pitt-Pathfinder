@@ -60,4 +60,4 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
-.DS_STORE
+.DS_Store
