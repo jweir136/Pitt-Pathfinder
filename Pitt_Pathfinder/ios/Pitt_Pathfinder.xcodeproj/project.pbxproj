@@ -91,7 +91,6 @@
 				BED6099A6DDDEE0520654DF6 /* Pods-Pitt_Pathfinder-Pitt_PathfinderTests.debug.xcconfig */,
 				F5D2E566135D5080A1713A93 /* Pods-Pitt_Pathfinder-Pitt_PathfinderTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -155,7 +154,6 @@
 			children = (
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4945K4RQM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pitt_Pathfinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,6 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4945K4RQM;
 				INFOPLIST_FILE = Pitt_Pathfinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
