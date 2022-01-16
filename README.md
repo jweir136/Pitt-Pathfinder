@@ -45,3 +45,22 @@ This guide assumes prior developer experience, particually in React Native. The 
 - npm == 8.1.0
 - react-native == 6.3.1
 - CocoaPods == 1.11.2
+
+#### Download Code
+
+The first step is to download the codebase from Github. All the code will be stored in the directory named <i>Pitt_Pathfinder</i>. Once the code is downloaded, you should set your current working directory to the directory containing the React Native code.
+
+```
+    git clone https://github.com/jweir136/Pitt-Pathfinder.git
+    cd Pitt_Pathfinder/Pitt_Pathfinder
+```
+
+#### Install Dependencies
+
+The second step is to install all the dependencies that are used by this project. CocoaPods is used for the installation.
+
+```
+    cd ios && pod install && cd ..
+```
+
+Once you have installed all the code and dependencies, the project is ready to go. From there you can just build and run the program in your simulator or device or choice.
