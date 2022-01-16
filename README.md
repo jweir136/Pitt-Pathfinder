@@ -37,3 +37,11 @@ Pitt Pathfinder is designed to be simple and straightforward. Controls are intui
 ## For Developers
 
 This part of the README file is targeted towards professional developers and those with more programming experience. This section goes over how the app was built, the technologies used, and possible future improvements. You can go to the <i>For Non-Developers</i> section for more information on how to use the app and to view short demo videos.
+
+### Installation
+
+This guide assumes prior developer experience, particually in React Native. The following technologies are used during development:
+
+- npm == 8.1.0
+- react-native == 6.3.1
+- CocoaPods == 1.11.2
