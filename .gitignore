@@ -61,3 +61,6 @@ buck-out/
 /ios/Pods/
 
 .DS_Store
+
+*.mp4
+*.mov
