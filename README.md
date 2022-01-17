@@ -8,7 +8,7 @@ Pitt Pathfinder is a navigation app build for IOS using React Native. The app gi
 
 ## For Non-Developers 🚫🔧
 
-This part of the README file is targeted towards those with less programming experience, especially in React Native. Rather than going over how the app works, this sections describes how to use the app. You can scroll down to the <i>For Developers</i> section if you want a more complicated, but in-depth rundown.
+This part of the README file is targeted towards those with less programming experience, especially in React Native. Rather than going over how the app works, this sections describes how to use the app. You can scroll down to the <i>For Developers</i> section if you want a more complicated, but in-depth rundown on installation.
 
 ### Installation
 
